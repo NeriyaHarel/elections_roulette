@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animationCache="false"
+    android:background="@color/blue_200"
+    app:layoutDescription="@xml/activity_main_scene"
+    tools:ignore="UseSwitchCompatOrMaterialXml">
+
+    <ImageView
+
+        android:id="@+id/share"
+        android:layout_width="140dp"
+        android:layout_height="122dp"
+        android:layout_marginEnd="10dp"
+        android:alpha="0"
+        android:background="#00FFFFFF"
+        android:elevation="2dp"
+        android:translationZ="70dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347"
+        app:srcCompat="@drawable/share"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+
+        android:id="@+id/bin"
+        android:layout_width="140dp"
+        android:layout_height="122dp"
+        android:layout_marginStart="10dp"
+        android:alpha="0"
+        android:background="#00FFFFFF"
+        android:translationZ="70dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.343"
+        app:srcCompat="@drawable/bin_00"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/empty_card"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/card_00"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_00"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/card_01"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_01"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/card_02"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_02"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/card_03"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_03"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/card_04"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_04"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/card_05"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_05"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/card_06"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_06"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_07"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_07"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_08"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_08"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_09"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_09"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_10"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_10"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_11"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_11"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_12"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_12"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_13"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_13"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_14"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_14"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_15"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_15"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_16"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_16"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_17"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_17"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_18"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_18"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_19"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_19"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_20"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_20"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_21"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_21"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_22"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_22"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_23"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_23"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_24"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_24"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_25"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_25"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_26"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_26"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_27"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_27"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_28"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_28"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_29"
+        android:layout_width="243dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="48dp"
+        android:background="#00FFFFFF"
+        android:foreground="@drawable/card_29"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout1"
+        android:layout_width="266dp"
+        android:layout_height="238dp"
+        android:layout_marginBottom="40dp"
+        android:translationZ="-6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ViewFlipper
+            android:id="@+id/kalpi_empty"
+            android:layout_width="239dp"
+            android:layout_height="166dp"
+            android:clickable="true"
+            android:contentDescription="kalpi"
+            android:focusable="true"
+            android:oneshot="false"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.609"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/kalpi_empty">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/kalpi_empty" />
+        </ViewFlipper>
+
+        <ViewFlipper
+            android:id="@+id/kalpi_half"
+            android:layout_width="239dp"
+            android:layout_height="166dp"
+            android:clickable="true"
+            android:contentDescription="kalpi"
+            android:focusable="true"
+            android:oneshot="false"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.609"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/kalpi_half_00">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/kalpi_half_00" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/kalpi_half_01" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/kalpi_half_02" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/kalpi_half_03" />
+
+
+        </ViewFlipper>
+
+        <ViewFlipper
+            android:id="@+id/kalpi_full"
+            android:layout_width="239dp"
+            android:layout_height="166dp"
+            android:clickable="true"
+            android:contentDescription="kalpi"
+            android:focusable="true"
+            android:oneshot="false"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.609"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/kalpi_full_00">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/kalpi_full_00" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/kalpi_full_01" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/kalpi_full_02" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/kalpi_full_03" />
+
+
+        </ViewFlipper>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+
+        android:id="@+id/reset"
+        android:layout_width="75dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:alpha="0"
+        android:clickable="true"
+        android:background="#00FFFFFF"
+        android:translationZ="70dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/reset"
+        tools:ignore="MissingConstraints"
+        android:focusable="true" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

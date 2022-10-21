@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Election Roulette</string>
+    <string name="share_card">
+        I chose my election vote with Election Roulette.
+        \nDownload Election Roulette https://google.com
+    </string>
+</resources>
