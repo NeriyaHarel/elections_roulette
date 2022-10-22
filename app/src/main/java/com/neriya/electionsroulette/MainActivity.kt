@@ -36,15 +36,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var boxAnimation: Animation
     private lateinit var cardAnimation: Animation
     private lateinit var throwCardAnimation: Animation
-    private lateinit var boxWelcomeAnimator : ObjectAnimator
     private lateinit var newCardSfx: MediaPlayer
+    private lateinit var shareCardSfx: MediaPlayer
     private lateinit var pushBoxSfx: MediaPlayer
     private lateinit var binButton: ImageView
     private lateinit var shareButton: ImageView
     private lateinit var resetButton: ImageView
-//    private lateinit var pushImage: ImageView
 
-//    private lateinit var emptyCard: CardView
     private var firstMove = true
     private var welcome = true
     private val zDiff = 5
@@ -101,8 +99,6 @@ class MainActivity : AppCompatActivity() {
         R.raw.box_00_ship,
         R.raw.box_00_ship,
         R.raw.box_00_ship,
-        R.raw.box_00_ship,
-        R.raw.box_01_sneeze,
         R.raw.box_01_sneeze,
         R.raw.box_02_high,
         R.raw.box_03_zipper,
@@ -112,6 +108,14 @@ class MainActivity : AppCompatActivity() {
         R.raw.box_07_down,
         R.raw.box_08_santa,
         R.raw.box_08_santa,
+        R.raw.box_09_horn,
+        R.raw.box_10_horse,
+        R.raw.box_11_dog,
+        R.raw.box_12_sword,
+        R.raw.box_13_winter,
+        R.raw.box_14_woosh,
+        R.raw.box_15_oi,
+        R.raw.box_16_quarter,
 
 
         )
@@ -135,12 +139,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_main)
         changeBox(R.id.kalpi_full)
-//        box.setBackgroundResource(R.id.spin_animation)
 
-
-
-
-//1392
 
 
 
@@ -149,37 +148,18 @@ class MainActivity : AppCompatActivity() {
         shareButton = findViewById<ImageView>(R.id.share)
         shareButton.z = 70F
         resetButton = findViewById(R.id.reset)
-//        pushImage = findViewById(R.id.touch)
 
-        resetButton.setOnClickListener{ reset() }
+        resetButton.setOnClickListener { reset() }
 
         newCardSfx = MediaPlayer.create(this, R.raw.pop)
-        throwCardAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.throw_card_animator)
+        shareCardSfx = MediaPlayer.create(this, R.raw.share_00)
+
+
+        throwCardAnimation =
+            AnimationUtils.loadAnimation(applicationContext, R.anim.throw_card_animator)
         cardAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.card_animator)
         boxAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.box_animator)
         boxAnimation.setRepeatCount(5)
-
-//        boxAnimationDrawable = box.background as AnimationDrawable
-
-//        box.setOnTouchListener { v, event ->
-//            when (event?.action) {
-//
-//
-//                MotionEvent.ACTION_DOWN ->{
-//
-//                }
-//
-//                MotionEvent.ACTION_UP -> {
-//                    pushBoxSfx.stop()
-//                    pushBoxSfx.release()
-//
-//                    scaleDown(box)
-//                }
-//
-//            }
-//
-//            v?.onTouchEvent(event) ?: true
-//        }
     }
     private fun changeBox(recourceId:Int){
         if(::box.isInitialized){
@@ -195,10 +175,8 @@ class MainActivity : AppCompatActivity() {
                 pushBoxSfx.release()
             }
 
-//            if (boxWelcomeAnimator.isRunning) boxWelcomeAnimator.cancel()
             if (welcome) {
                 welcome = false
-//                pushImage.visibility = View.GONE
             }
             pushBoxSfx = MediaPlayer.create(this, getRandomBoxSoundId())
 
@@ -208,29 +186,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-//    override fun onWindowFocusChanged(hasFocus: Boolean) {
-//        super.onWindowFocusChanged(hasFocus)
-//
-////        if (hasFocus && welcome) {
-////            val welcomeScaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.8f, 1f)
-////            val welcomeScaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.8F, 1f)
-//////            val welcomePivotY = PropertyValuesHolder.ofFloat("pivotY", box.y+box.height)
-////            // and more ,welcomePivotY,welcomePivotX
-////            boxWelcomeAnimator = ObjectAnimator.ofPropertyValuesHolder(pushImage, welcomeScaleX, welcomeScaleY).apply {
-////                interpolator = AccelerateDecelerateInterpolator()
-////                // duration of each animation
-////                duration = 1500
-////                // repeat infinite count (you can put n times)
-////                repeatCount = 200
-////                // reverse animation after finish
-////                repeatMode = ValueAnimator.REVERSE
-////                // start animation\
-////            }
-////            boxWelcomeAnimator.start()
-////
-////        }
-//    }
-
 
     private fun scaleUp(imageView: ViewFlipper, animation: Animation){
         animation.setAnimationListener(object: Animation.AnimationListener{
@@ -251,7 +206,7 @@ class MainActivity : AppCompatActivity() {
                 if(cards.size > 25){
                     changeBox(R.id.kalpi_full)
                 }
-                else if(cards.size > 0){
+                else if(cards.size > 1){
                     changeBox(R.id.kalpi_half)
                 }
                 else{
@@ -456,6 +411,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     private fun shareCard(card: CardView) {
 
+        shareCardSfx.start()
         val height = card.height
         val width = card.width
         val b = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
@@ -591,7 +547,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         throwTries++
-        if(resetButton.alpha != 1.0F && cards.size < 15){
+        if(resetButton.alpha != 1.0F && cards.size < 25){
             resetButton.animate()
                 .alpha(1.0F)
                 .setDuration(350)
@@ -658,7 +614,6 @@ class MainActivity : AppCompatActivity() {
             visibleView.setBackgroundResource(
                 resources.getIdentifier(resourceName, "drawable", context.packageName)
             )
-//            visibleView.rotation = -visibleView.rotation
             visibleView.scaleX = -1F
             visibleView.rotation = -visibleView.rotation
             visibleView.rotationX = -visibleView.rotationX
