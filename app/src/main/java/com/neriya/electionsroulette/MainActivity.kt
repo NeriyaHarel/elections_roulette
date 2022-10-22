@@ -1,31 +1,35 @@
 package com.neriya.electionsroulette
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
-import android.animation.ValueAnimator
+import android.animation.*
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.*
-import android.graphics.drawable.AnimationDrawable
-import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.view.animation.*
 import android.widget.ImageView
 import android.widget.ViewFlipper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.animation.doOnEnd
 import androidx.core.app.ShareCompat
 import androidx.core.content.FileProvider.getUriForFile
 import java.io.File
 import java.io.FileOutputStream
+import kotlin.math.abs
 import kotlin.random.Random
+val STATE = "state"
+val ROTATION = "rotation"
 
+val STATE_NEW = 0
 
+val STATE_FRONT = 1
+val STATE_BACK = 2
+val BACK_SUFFIX = "_back"
 class MainActivity : AppCompatActivity() {
     private var tries = 0
     private var throwTries = 0
@@ -40,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var resetButton: ImageView
 //    private lateinit var pushImage: ImageView
 
-    private lateinit var emptyCard: CardView
+//    private lateinit var emptyCard: CardView
     private var firstMove = true
     private var welcome = true
     private val zDiff = 5
@@ -49,39 +53,42 @@ class MainActivity : AppCompatActivity() {
     private val z2 = z1 - zDiff
     private lateinit var box: ViewFlipper
     private val cardStack =  ArrayDeque<CardView>()
-
-    private var cards =mutableListOf(
+    private var cards = mutableListOf(
+        R.id.card_empty,
         R.id.card_00,
         R.id.card_01,
-        R.id.card_02,
-        R.id.card_03,
-        R.id.card_04,
-        R.id.card_05,
-        R.id.card_06,
-        R.id.card_07,
-        R.id.card_08,
-        R.id.card_09,
-        R.id.card_10,
-        R.id.card_11,
-        R.id.card_12,
-        R.id.card_13,
-        R.id.card_14,
-        R.id.card_15,
-        R.id.card_16,
-        R.id.card_17,
-        R.id.card_18,
-        R.id.card_19,
-        R.id.card_20,
-        R.id.card_21,
-        R.id.card_22,
-        R.id.card_23,
-        R.id.card_24,
-        R.id.card_25,
-        R.id.card_26,
-        R.id.card_27,
-        R.id.card_28,
-        R.id.card_29,
+//        R.id.card_02,
+//        R.id.card_03,
+//        R.id.card_04,
+//        R.id.card_05,
+//        R.id.card_06,
+//        R.id.card_07,
+//        R.id.card_08,
+//        R.id.card_09,
+//        R.id.card_10,
+//        R.id.card_11,
+//        R.id.card_12,
+//        R.id.card_13,
+//        R.id.card_14,
+//        R.id.card_15,
+//        R.id.card_16,
+//        R.id.card_17,
+//        R.id.card_18,
+//        R.id.card_19,
+//        R.id.card_20,
+//        R.id.card_21,
+//        R.id.card_22,
+//        R.id.card_23,
+//        R.id.card_24,
+//        R.id.card_25,
+//        R.id.card_26,
+//        R.id.card_27,
+//        R.id.card_28,
+//        R.id.card_29,
+//        R.id.card_30,
+//        R.id.card_31,
     )
+    var cardStates = cards.associateWithTo(mutableMapOf()) {mutableMapOf(STATE to STATE_NEW, ROTATION to 1) }
     private var boxSounds = arrayOf(
         R.raw.box_00_ship,
         R.raw.box_00_ship,
@@ -116,6 +123,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_main)
         changeBox(R.id.kalpi_full)
@@ -134,7 +142,7 @@ class MainActivity : AppCompatActivity() {
         shareButton.z = 70F
         resetButton = findViewById(R.id.reset)
 //        pushImage = findViewById(R.id.touch)
-        emptyCard = findViewById(R.id.empty_card)
+
         resetButton.setOnClickListener{ reset() }
 
         newCardSfx = MediaPlayer.create(this, R.raw.pop)
@@ -231,7 +239,7 @@ class MainActivity : AppCompatActivity() {
                 tries++
                 newCardSfx.start()
 
-                addCard(getNextCard())
+                addCard(getNextCard(applicationContext))
                 if(cards.size > 25){
                     changeBox(R.id.kalpi_full)
                 }
@@ -261,25 +269,31 @@ class MainActivity : AppCompatActivity() {
         }
         return false
     }
-    private fun getNextCard() :CardView{
+    private fun getNextCard(context: Context) :CardView{
         var newCard = getRandomCard()
         var retries = 25
         while(badNewCard(newCard) && retries > 0) {
             newCard = getRandomCard()
             retries--
         }
-        if(retries <= 0){
-            return emptyCard
+        newCard.setBackgroundResource(
+            resources.getIdentifier(resources.getResourceEntryName(newCard.id), "drawable", context.packageName)
+        )
+        newCard.scaleX = 1F
+        cardStates[newCard.id]?.set(STATE, STATE_NEW)
+        if(cardStates[newCard.id]?.get(ROTATION)!! == -1){
+            newCard.rotation = -newCard.rotation
+            newCard.rotationX = -newCard.rotationX
+            newCard.rotationY = -newCard.rotationY
+            cardStates[newCard.id]?.set(ROTATION, 1)
         }
+
+
         return newCard
     }
     private fun getRandomCard():CardView {
-        return try{
-            findViewById(cards[(cards.indices).random()])
-        }
-        catch(_:NoSuchElementException){
-            emptyCard
-        }
+        return findViewById(cards[(cards.indices).random()])
+
     }
 
     private fun generateRandomAngle(startAngle: Int=-1,endAngle: Int =1): Float {
@@ -342,6 +356,11 @@ class MainActivity : AppCompatActivity() {
                     private var dX: Float = 0f
                     private var dY: Float = 0f
                     private var cancel: Boolean = false
+                    private var click = false
+
+                    private var originalX = newCard.x
+                    private var originalY = newCard.y
+
 
                     @SuppressLint("ClickableViewAccessibility")
 
@@ -353,11 +372,19 @@ class MainActivity : AppCompatActivity() {
                         when (event.action) {
                             MotionEvent.ACTION_DOWN -> {
                                 if(firstCardAnimationSet.isRunning)firstCardAnimationSet.cancel()
-
+                                click = true
+                                originalX = event.rawX
+                                originalY = event.rawY
                                 dX = view.x - event.rawX
                                 dY = view.y - event.rawY
                             }
                             MotionEvent.ACTION_MOVE -> {
+
+                                if(abs(originalY - event.rawY) < 5 && abs(originalX - event.rawX) < 5){
+                                    click = true
+                                    return true
+                                }
+                                click = false
                                 newX = event.rawX + dX
                                 newY = event.rawY + dY
 
@@ -371,8 +398,17 @@ class MainActivity : AppCompatActivity() {
 
                             }
                             MotionEvent.ACTION_UP ->{
+                                if(click){
+                                    Log.d("click", "true")
+                                    flipCard(applicationContext,view as CardView)
+
+
+                                    return true
+                                }
+                                Log.d("click", "false")
+
                                 newX = event.rawX + dX
-                                if(newX < -10F && view != emptyCard){
+                                if(newX < -10F){
                                     showButton(binButton)
                                     throwCard(view)
                                     cancel = true
@@ -499,12 +535,13 @@ class MainActivity : AppCompatActivity() {
             R.id.card_29,
         )
         changeBox(R.id.kalpi_full)
-        resetCard(emptyCard)
         for(cardId in cards){
             resetCard(findViewById(cardId))
         }
         showButton(binButton, 2500)
         showButton(shareButton,2500)
+        cardStates = cards.associateWithTo(mutableMapOf()) {mutableMapOf(STATE to STATE_NEW, ROTATION to 1) }
+
     }
     private fun showButton(button: View, time: Long=1500){
         button.alpha = 1.0F
@@ -535,6 +572,16 @@ class MainActivity : AppCompatActivity() {
             return
         }
         throwTries++
+        if(resetButton.alpha != 1.0F && cards.size < 15){
+            resetButton.animate()
+                .alpha(1.0F)
+                .setDuration(350)
+                .start()
+        }
+        if(card.id == R.id.card_empty) {
+            resetCard(card as CardView)
+            return
+        }
         cards.remove(card.id)
         cardStack.remove(card)
         MediaPlayer.create(this, getRandomBinSoundId()).start()
@@ -546,12 +593,59 @@ class MainActivity : AppCompatActivity() {
             .withEndAction{card.visibility = View.GONE}
             .start()
 
-        if(resetButton.alpha != 1.0F && cards.size < 15){
-            resetButton.animate()
-                .alpha(1.0F)
-                .setDuration(350)
-                .start()
+
+
+    }
+    fun flipCard(context: Context, visibleView: CardView) {
+        var resourceName = resources.getResourceEntryName(visibleView.id)
+        val cardState = cardStates[visibleView.id]?.get(STATE)
+        if(cardState == STATE_FRONT || cardState == STATE_NEW){
+            resourceName += BACK_SUFFIX
+
+            Log.d("resourceName", resourceName)
+            cardStates[visibleView.id]?.set(STATE, STATE_BACK)
+        }
+        else{
+            Log.d("resourceName", resourceName)
+
+            cardStates[visibleView.id]?.set(STATE, STATE_FRONT)
+        }
+
+        val scale = applicationContext.resources.displayMetrics.density
+        visibleView.scaleX = 1F
+        cardStates[visibleView.id]?.set(ROTATION, cardStates[visibleView.id]?.get(ROTATION)!! * -1)
+
+        visibleView.cameraDistance = 8000 * scale
+        if(cardState != STATE_NEW) {
+            visibleView.rotation = -visibleView.rotation
+            visibleView.rotationY = -visibleView.rotationY
+            visibleView.rotationX = -visibleView.rotationX
+        }
+
+        val flipOutAnimatorSet =
+            AnimatorInflater.loadAnimator(
+                context,
+                R.animator.flip_out
+            ) as AnimatorSet
+        val flipInAnimationSet =
+            AnimatorInflater.loadAnimator(
+                context,
+                R.animator.flip_in
+            ) as AnimatorSet
+        flipInAnimationSet.setTarget(visibleView)
+
+        flipInAnimationSet.start()
+        flipInAnimationSet.doOnEnd {
+            visibleView.setBackgroundResource(
+                resources.getIdentifier(resourceName, "drawable", context.packageName)
+            )
+//            visibleView.rotation = -visibleView.rotation
+            visibleView.scaleX = -1F
+            visibleView.rotation = -visibleView.rotation
+            visibleView.rotationX = -visibleView.rotationX
+            visibleView.rotationY = -visibleView.rotationY
+            flipOutAnimatorSet.setTarget(visibleView)
+            flipOutAnimatorSet.start()
         }
     }
-
 }
